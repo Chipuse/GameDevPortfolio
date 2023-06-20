@@ -36,9 +36,46 @@
 							<h1 class="major">Handy Dandy</h1>
 							<span class="image fit"><img src="images/handy_dandy/handy_dandy_splash.png" alt="" /></span>
 							<a href="https://store.steampowered.com/app/1234400/Handy_Dandy/" target="_blank" class="button icon solid fa-globe">Steam Page</a>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<h2>Steam Release</h2>
-							<p><span class="image left"><img src="images/handy_dandy/screen1.png" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
+							<section>
+							<p>Handy Dandy is a cooperative puzzle
+								platformer for two players. It was originally
+								created as a semester project in 2019 and
+								released on Steam in 2020.</p>
+								<p>The two cave adventurer Handy and Dandy
+								have to solve puzzles by aligning the
+								dimensional rift that seperates them with the
+								crystals on screen.
+								For that they have to help each other
+								through their individual but overlapping level
+								layouts.</p>
+								<p>As the lead programmer of the team I was
+									responsible for implementing the game
+									systems including platformer movement,
+									npc behavior and game logic.
+									I was also part of the design process for the
+									game mechanics and did some of the level
+									designs.
+								</p>
+							</section>
+							<section>
+							<h2>Game Mechanics</h2>
+							<p>
+								<span class="image left"><img src="images/handy_dandy/screen1.png" alt="" /></span>
+								Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
+								The characters themselves are pretty much the most basic platformer characters imaginable. 
+								They only listen to three inputs: Left, Right and Jump. 
+								We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
+								With that the players can help each other through the levels by using the other character as a platform.
+								<br>
+								<br>
+								A bit more tricky is how the levels of handy dandy work. 
+								Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
+								The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
+								<br>
+								<br>
+								At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
+							</p>
+						</section>
 							<h2> Game Design</h2>
 							<p><span class="image right"><img src="images/handy_dandy/screen2.png" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>								
 							<h2>Programming Learnings</h2>
