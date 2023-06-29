@@ -20,9 +20,9 @@
 				<nav>
 					<ul>
 						<li><a href="index.html">Landing Page</a></li>
-						<li><a href="handydandy_projectpage.html">Previous: Handy Dandy</a></li>
+						<!--<li><a href="handydandy_projectpage.html">Previous: Handy Dandy</a></li>-->
 						<li><a href="exesincrime_projectpage.html" class="active">Exes in Crime</a></li>
-						<li><a href="mountdoom_projectpage.html">Next: Mount Doom</a></li>
+						<li><a href="handydandy_projectpage.html">Next: Handy Dandy</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -34,9 +34,63 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">Exes in Crime</h1>
-							<span class="image fit"><img src="images/exes_in_crime/exes_in_crime_splash.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<span class="image fit"><img src="images/exes_in_crime/exes_in_crime_splash.jpg" alt="" /></span>							
+							<a href="https://github.com/Chipuse/Exes_in_crime" target="_blank" class="button icon brands fa-github">Github Repository</a>
+							<section>
+								<p>Handy Dandy is a cooperative puzzle
+									platformer for two players. It was originally
+									created as a semester project in 2019 and
+									released on Steam in 2020.</p>
+									<p>The two cave adventurer Handy and Dandy
+									have to solve puzzles by aligning the
+									dimensional rift that seperates them with the
+									crystals on screen.
+									For that they have to help each other
+									through their individual but overlapping level
+									layouts.</p>
+									<p>As the lead programmer of the team I was
+										responsible for implementing the game
+										systems including platformer movement,
+										npc behavior and game logic.
+										I was also part of the design process for the
+										game mechanics and did some of the level
+										designs.
+									</p>
+								</section>
+								<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/nsJdimvL2Jg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+								</div>
+								<section>
+								<h2>Editor Tools</h2>
+								<p>
+									
+									Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
+									The characters themselves are pretty much the most basic platformer characters imaginable. 
+									They only listen to three inputs: Left, Right and Jump. 
+									We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
+									With that the players can help each other through the levels by using the other character as a platform.
+									<br>
+									<br>
+									A bit more tricky is how the levels of handy dandy work. 
+									Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
+									The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
+									<br>
+									<br>
+									At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
+								</p>
+								<h3>Map Editor</h3>
+								<p>
+									<span class="image fit"><img src="images/handy_dandy/screen1.png" alt="" /></span>
+								</p>
+								<h3>Dialog Editor</h3>
+								<p>
+
+								</p>
+								<h3>Serialization</h3>
+								<p>
+									
+								</p>
+								</section>
 						</div>
 					</section>
 
