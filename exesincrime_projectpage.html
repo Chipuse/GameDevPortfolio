@@ -37,92 +37,133 @@
 							<span class="image fit"><img src="images/exes_in_crime/exes_in_crime_splash.jpg" alt="" /></span>							
 							<a href="https://github.com/Chipuse/Exes_in_crime" target="_blank" class="button icon brands fa-github">Github Repository</a>
 							<section>
-								<p>Handy Dandy is a cooperative puzzle
-									platformer for two players. It was originally
-									created as a semester project in 2019 and
-									released on Steam in 2020.</p>
-									<p>The two cave adventurer Handy and Dandy
-									have to solve puzzles by aligning the
-									dimensional rift that seperates them with the
-									crystals on screen.
-									For that they have to help each other
-									through their individual but overlapping level
-									layouts.</p>
-									<p>As the lead programmer of the team I was
-										responsible for implementing the game
-										systems including platformer movement,
-										npc behavior and game logic.
-										I was also part of the design process for the
-										game mechanics and did some of the level
-										designs.
-									</p>
+								<p>Introduction - Logline esque - verweis auf <b><a href="https://youtu.be/qZBaQJq3nds" target="_blank" class="icon brands fa-youtube"> Trailer</a> </b>für mehr worldbuilding</p>
+								<p>Technische daten zum Projekt: That it was a card game and strategy game - bearbeitungszeit - prototype, nicht gepolished</p>
+								<p>
+									<li><a href="#tools">Main Projects</a></li>
+									<li><a href="#systems">Smaller Projects</a></li>
+								</p>
 								</section>
 								<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
 									<iframe width="560" height="315" src="https://www.youtube.com/embed/nsJdimvL2Jg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 								</div>
-								<section>
+								<section id="tools">
 								<h2>Editor Tools</h2>
 								<p>
-									
-									Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
-									The characters themselves are pretty much the most basic platformer characters imaginable. 
-									They only listen to three inputs: Left, Right and Jump. 
-									We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
-									With that the players can help each other through the levels by using the other character as a platform.
-									<br>
-									<br>
-									A bit more tricky is how the levels of handy dandy work. 
-									Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
-									The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
-									<br>
-									<br>
-									At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
+									Reasoning why editor tools - 		
+									I wrote editor tools: Map editor, Dialog editor
 								</p>
 								<h3>Map Editor</h3>
 								<p>
 									<!--
-									
-									-->
-									<span class="image left"><img src="images/exes_in_crime/map_editor_gif.gif" alt="" /></span>
-									Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
-									The characters themselves are pretty much the most basic platformer characters imaginable. 
-									They only listen to three inputs: Left, Right and Jump. 
-									We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
-									With that the players can help each other through the levels by using the other character as a platform.
+										<span class="image left"><img src="images/exes_in_crime/map_editor_gif.gif" alt="" /></span>
+									-->	
+									<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+										<img src="images/exes_in_crime/map_editor.gif" alt="" />
+									</div>
+									To allow fast level creation and iteration - Helper tool to place floor tiles and wall tiles on grid of map object - two grid options: floor grid and wall grid for inbetween the floor tiles - References prefabs from then resource folder
 									<br>
+									Prefabs can contain information for the initial state of the tile. E.g. if a window or door can be passed through or is locked and has to be opened in game before the player can walk through them.
 									<br>
-									A bit more tricky is how the levels of handy dandy work. 
-									Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
-									The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
-									<br>
-									<br>
-									At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
-									
+									The prefabs of the tiles are also used to allow for instanced rendering of the meshes used for the tiles. Enhancing performance significantly.					
 								</p>
 								<h3>Dialog Editor</h3>
 								<p>
 									<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
-										<img src="images/exes_in_crime/map_editor_gif.gif" alt="" />
+										<img src="images/exes_in_crime/dialog_editor.PNG" alt="" />
 									</div>
-									Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
-									The characters themselves are pretty much the most basic platformer characters imaginable. 
-									They only listen to three inputs: Left, Right and Jump. 
-									We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
-									With that the players can help each other through the levels by using the other character as a platform.
-									<br>
-									<br>
-									A bit more tricky is how the levels of handy dandy work. 
-									Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
-									The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
-									<br>
-									<br>
-									At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
-								</p>
-								<h3>Serialization</h3>
-								<p>
+									To give narrative designer a more accesible tool to create, test and iterate over the many conversations the game has. 
+									- Scriptable object approach makes  it possible to save changes, which are made when testing conversations during play mode. 
+									- Dialog objects contain information about the displayed text, the two sprites which are going to be displayed and an optional voiceline to play. 
+									The editor window allows to edit those values in a more cleanly structured way than editing the array of textboxes directly in the editor. 
+									The designer can also add and delete textboxes and change the order they get presented.
 									
 								</p>
 								</section>
+								<section id="systems">
+									<h2>Game Systems</h2>
+									<p>
+										
+										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
+										The characters themselves are pretty much the most basic platformer characters imaginable. 
+										They only listen to three inputs: Left, Right and Jump. 
+										We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
+										With that the players can help each other through the levels by using the other character as a platform.
+										<br>
+										<br>
+										A bit more tricky is how the levels of handy dandy work. 
+										Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
+										The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
+										<br>
+										<br>
+										At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
+									</p>
+									<h3>Strategy Game</h3>
+									<p>
+										<!--
+										
+										-->
+										<span class="image left"><img src="images/exes_in_crime/map_editor_gif.gif" alt="" /></span>
+										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
+										The characters themselves are pretty much the most basic platformer characters imaginable. 
+										They only listen to three inputs: Left, Right and Jump. 
+										We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
+										With that the players can help each other through the levels by using the other character as a platform.
+										<br>
+										<br>
+										A bit more tricky is how the levels of handy dandy work. 
+										Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
+										The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
+										<br>
+										<br>
+										At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
+										
+									</p>
+									<h3>Cards</h3>
+									<p>
+										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+											<img src="images/exes_in_crime/card_use.gif" alt="" />
+										</div>
+										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+											<img src="images/exes_in_crime/card_use_2.gif" alt="" />
+										</div>
+										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+											<img src="images/exes_in_crime/card_use_3.gif" alt="" />
+										</div>
+										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
+										The characters themselves are pretty much the most basic platformer characters imaginable. 
+										They only listen to three inputs: Left, Right and Jump. 
+										We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
+										With that the players can help each other through the levels by using the other character as a platform.
+										<br>
+										<br>
+										A bit more tricky is how the levels of handy dandy work. 
+										Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
+										The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
+										<br>
+										<br>
+										At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.																
+									</p>
+									<h3>Serialization</h3>
+									<p>
+										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+											<img src="images/exes_in_crime/map_editor_gif.gif" alt="" />
+										</div>
+										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
+										The characters themselves are pretty much the most basic platformer characters imaginable. 
+										They only listen to three inputs: Left, Right and Jump. 
+										We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
+										With that the players can help each other through the levels by using the other character as a platform.
+										<br>
+										<br>
+										A bit more tricky is how the levels of handy dandy work. 
+										Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
+										The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
+										<br>
+										<br>
+										At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.																
+									</p>
+									</section>
 						</div>
 					</section>
 
