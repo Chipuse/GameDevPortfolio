@@ -59,7 +59,7 @@
 										<span class="image left"><img src="images/exes_in_crime/map_editor_gif.gif" alt="" /></span>
 									-->	
 									<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
-										<img src="images/exes_in_crime/map_editor.gif" alt="" />
+										<img src="images/exes_in_crime/map_editor_4.gif" alt="" />
 									</div>
 									To allow fast level creation and iteration - Helper tool to place floor tiles and wall tiles on grid of map object - two grid options: floor grid and wall grid for inbetween the floor tiles - References prefabs from then resource folder
 									<br>
@@ -130,6 +130,9 @@
 										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
 											<img src="images/exes_in_crime/card_use_3.gif" alt="" />
 										</div>
+										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
+											<img src="images/exes_in_crime/card_use_4.gif" alt="" />
+										</div>
 										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
 										The characters themselves are pretty much the most basic platformer characters imaginable. 
 										They only listen to three inputs: Left, Right and Jump. 
@@ -155,7 +158,77 @@
 										We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
 										With that the players can help each other through the levels by using the other character as a platform.
 										<br>
+										<h3>Preformatted</h3>
+										<pre><code>
+public interface ISerializableUnit
+{
+	SerializedDataContainer Serialize();
+	void Deserialize(SerializedDataContainer input);
+
+	SerializableClasses GetSerializableType();
+}
+										</code></pre>
 										<br>
+										<pre><code>
+public class SerializedDataContainer
+{
+	public SerializableClasses type = SerializableClasses.undef;
+	public string prefabPath = "";
+	public List<PositionKey> posKeys = new List<PositionKey>();
+	public List<SerializedDataContainer> members = new List<SerializedDataContainer>();
+	public List<bool> bools= new List<bool>();
+	public List<string> strings = new List<string>();
+	public List<int> ints = new List<int>();
+	public List<float> floats = new List<float>();
+
+	public void Serialize(PositionKey value) { posKeys.Add(value); }
+	public void Serialize(SerializedDataContainer value) { members.Add(value); }
+	public void Serialize(bool value) { bools.Add(value); }
+	public void Serialize(string value) { strings.Add(value); }
+	public void Serialize(int value) { ints.Add(value); }
+	public void Serialize(float value) { floats.Add(value); }
+	public void Serialize(ISerializableUnit value) { Serialize(value.Serialize()); }
+
+	public PositionKey GetFirstPosKey()
+	{
+		PositionKey result = posKeys[0];
+		posKeys.RemoveAt(0);
+		return result;
+	}
+	public SerializedDataContainer GetFirstMember()
+	{
+		SerializedDataContainer result = members[0];
+		members.RemoveAt(0);
+		return result;
+	}
+	public bool GetFirstBool()
+	{
+		bool result = bools[0];
+		bools.RemoveAt(0);
+		return result;
+	}
+
+	public string GetFirstString()
+	{
+		string result = strings[0];
+		strings.RemoveAt(0);
+		return result;
+	}
+	public int GetFirstInt()
+	{
+		int result = ints[0];
+		ints.RemoveAt(0);
+		return result;
+	}
+
+	public float GetFirstFloat()
+	{
+		float result = floats[0];
+		floats.RemoveAt(0);
+		return result;
+	}
+}
+										</code></pre>
 										A bit more tricky is how the levels of handy dandy work. 
 										Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
 										The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
