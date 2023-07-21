@@ -49,7 +49,8 @@
 							</p>
 							<h2>Mobile Idle Game</h2>
 							<p><span class="image left"><img src="images/mount_doom/screen4.jpg" alt="" height="300px" width="auto" /></span>
-								The game is split into two main game loops. The first is the Idle Game, which is the main way for the player to advance their progress.	
+								The game is split into two main game loops. 
+								The first is the Idle Game, which is the main way for the player to advance their progress.	
 								The player can choose a party of up to four hereos and send them into one of four dungeons. 
 								The stats of the hereoes determine what paths they will take and also how easily they will overcome challenges they have to face. 
 								The higher the difficutly of the dungeon (while the hereos are strong enough for it) the bigger the reward at the end of it, which a rarer new hero and growth for the stats of the party. 
@@ -63,9 +64,21 @@
 							</p>
 							
 							<h2>Online Trading of heroes</h2>
-							<p><span class="image right"><img src="images/mount_doom/screen5.jpg" alt="" height="300px" width="auto" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>								
-
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+							<p><span class="image right"><img src="images/mount_doom/screen5.jpg" alt="" height="300px" width="auto" /></span>
+								The second loop is the trading of hereos with other players.  
+								To give the player another and a bit more targeted option to advance their collection. 
+								According to the design of the idle game the trading also has a down time phase, where the player can leave the game for a time. 
+								First the player chooses up to four heroes they would like to offer other players. Then they can browse current offers of other players and mark offers they like. 
+								If a player, whose offerngot liked by our example player, likes one of the offers back a match happens. 
+								Both hereos npo longer get shown other players as offers and the next time either player starts their game they will see an animation that their old hero said bye bye and the new one is added to their collection. 
+							</p>
+							<p>
+								Since the trading happens online a lot happens on the server side, but since every action gets triggered by an action a player commits (creting an offer, lking an offer, retracting an offer) it doesn't need it's loop running in real time. 
+								Some concerns arrose over what happens if two players diffrent players would match at the same time with an offer. Who would get it? 
+								It was unknown whether the server handles multiple request at the same time or if it strictly does one after the other. If the first one is the case it could happen that both requests would perform the check if the offer is still up and then continue to setting the flagsa that they claimed it resulting in one overwriting the other. 
+								<br> 
+								In the end I never managed to force this edge case, but at the same time the logic was implemented that it wouldn't result in a critical error, just that the hero of the double taken offer is in the end duplicated and one of the other heroes is lost for ever.
+							</p>
 							<h2>Google Sheets as Server Backend?</h2>
 							<p><span class="image right"><img src="images/mount_doom/server_user.PNG" alt="" height="300px" width="auto" /></span>
 								Yes, that's right. Mount Doom uses an online Google Spreadsheet as the backend for it's online features like the trading and account management. 
@@ -81,7 +94,7 @@
 								Since the data needed to be spread out throughout the sheets, it was a very readable visual representation of the server backend, that could also be easily manually manipulated by hand if necessary.
 								Also I implemented Questionaires via Google forms to gather information for my bachelor thesis and due to the compatibility of the Google App Services in itself it was very easy to implement the questionaires into the game itself and the results were also integrated into the server data.
 								<br>
-								And lastly the service is free, running on a service I don't have to host myself and therefore still up and going! So maybe go check it out?
+								And lastly the service is free, I don't have to host it myself and therefore it is still up and going! So maybe go check it out?
 							</p>
 							<p>
 								While it worked out pretty great for it's cause, this approach also showed me the relevancy of dedicated server solutions. 

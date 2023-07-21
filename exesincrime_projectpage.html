@@ -34,25 +34,30 @@
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major">Exes in Crime</h1>
-							<span class="image fit"><img src="images/exes_in_crime/exes_in_crime_splash.jpg" alt="" /></span>							
-							<a href="https://github.com/Chipuse/Exes_in_crime" target="_blank" class="button icon brands fa-github">Github Repository</a>
+							<span class="image fit"><img src="images/exes_in_crime/exes_in_crime_splash.jpg" alt="" /></span>
+							<a href="https://github.com/Chipuse/Exes_in_crime" target="_blank" class="button icon brands fa-github">Github</a>							
+							<a href="https://youtu.be/qZBaQJq3nds" target="_blank" class="button icon brands fa-youtube">Trailer</a> 
 							<section>
-								<p>Introduction - Logline esque - verweis auf <b><a href="https://youtu.be/qZBaQJq3nds" target="_blank" class="icon brands fa-youtube"> Trailer</a> </b>für mehr worldbuilding</p>
-								<p>Technische daten zum Projekt: That it was a card game and strategy game - bearbeitungszeit - prototype, nicht gepolished</p>
 								<p>
-									<li><a href="#tools">Main Projects</a></li>
-									<li><a href="#systems">Smaller Projects</a></li>
+									'Exes in Crime' was likely the most ambitious project I worked on during my studies. 
+									Created as my 6th semester project in 2021, the vision was a turn based strategy game with a variety of game systems, like a card game system introducing a new flavour of randomness and strategic planning to the genre. 
+									At the same time we aimed for a extensive story with big cast of diverse and queer characters. 
+									If you want to meet Vin and his exes in crime have a look at the <b><a href="https://youtu.be/qZBaQJq3nds" target="_blank" class="icon brands fa-youtube"> Game Trailer</a> </b>! 
+									<br><br>
+									Otherwise I want to use this page to talk a bit about the challenges and achievements I encountered as the programmer and producer of this project. 
+									<br>
+									Feel free to watch the following video, which is a short showreel of the different things I worked on. Further below I talk a bit abnout the two big tools I created for our game designer and artists, which were a big learning focus for me:								
+									<li><b><a href="#tools">Map Editor</a></li>
+									<li><a href="#dialogtool">Dialog Editor</a></li></b>
 								</p>
 								</section>
+								<h2>Showreel</h2>
 								<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
 									<iframe width="560" height="315" src="https://www.youtube.com/embed/nsJdimvL2Jg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 								</div>
 								<section id="tools">
 								<h2>Editor Tools</h2>
-								<p>
-									Reasoning why editor tools - 		
-									I wrote editor tools: Map editor, Dialog editor
-								</p>
+								
 								<h3>Map Editor</h3>
 								<p>
 									<!--
@@ -61,26 +66,38 @@
 									<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
 										<img src="images/exes_in_crime/map_editor_4.gif" alt="" />
 									</div>
-									To allow fast level creation and iteration - Helper tool to place floor tiles and wall tiles on grid of map object - two grid options: floor grid and wall grid for inbetween the floor tiles - References prefabs from then resource folder
-									<br>
-									Prefabs can contain information for the initial state of the tile. E.g. if a window or door can be passed through or is locked and has to be opened in game before the player can walk through them.
-									<br>
-									The prefabs of the tiles are also used to allow for instanced rendering of the meshes used for the tiles. Enhancing performance significantly.					
+									Part of the vision for the project was a tile based level creation system that would allow for fast level creation and iteration. 
+									Therefore a map editor was envisioned that would allow the level designer and the environment artist respectively to build levels that would be conforming to the game systems. 
+									<br><br>
+									The main part of the tool is that the prefabs of the tiles snap perfectly to the ground and wall grid and are directly registered in the map data. 
+									The map data is pretty much just a dictionary that contains a reference towards the prefab of the tile in the resource folder and its coordinates on the map. 
+									From this data the mapmanager can regenerate the map, which is the base skeleton of each level. 
+									Upon that, the level designer can put more gameobjects like enemies, safes and other interactables. 
+									These additional probs are saved in the scene of the level.
+									<br><br>
+									We realized relatively early that by instanciating for each tile it's own prefab the performance dropped heavily, since each mesh of the prefab was treated individually in the render queue.
+									Luckily the strucutre of how we saved the map data gave us options to manipulate how the visuals of the objects get generated. 
+									Instead of instancing each prefab, the prefabs get added to a special list marking the meshes of the needed prefab to be instanced rendered. 
+									Everytime the same prefab would pop up in the map, it would just add a counter to it's meshes that are already in the list and give the coordinates the copy should be rendered. 
+									Enhancing performance significantly.					
 								</p>
+								</section>
+								<section id="dialogtool">
 								<h3>Dialog Editor</h3>
 								<p>
 									<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
 										<img src="images/exes_in_crime/dialog_editor.PNG" alt="" />
 									</div>
 									To give narrative designer a more accesible tool to create, test and iterate over the many conversations the game has. 
-									- Scriptable object approach makes  it possible to save changes, which are made when testing conversations during play mode. 
-									- Dialog objects contain information about the displayed text, the two sprites which are going to be displayed and an optional voiceline to play. 
+									The Scriptable object approach makes  it possible to save changes, which are made when testing conversations during play mode. 
+									The custom Dialog objects contain information about the displayed text, the two sprites which are going to be displayed and an optional voiceline to play. 
 									The editor window allows to edit those values in a more cleanly structured way than editing the array of textboxes directly in the editor. 
 									The designer can also add and delete textboxes and change the order they get presented.
 									
 								</p>
 								</section>
-								<section id="systems">
+								<!--
+									<section id="systems">
 									<h2>Game Systems</h2>
 									<p>
 										
@@ -99,10 +116,7 @@
 										At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.
 									</p>
 									<h3>Strategy Game</h3>
-									<p>
-										<!--
-										
-										-->
+									<p>										
 										<span class="image left"><img src="images/exes_in_crime/map_editor_gif.gif" alt="" /></span>
 										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
 										The characters themselves are pretty much the most basic platformer characters imaginable. 
@@ -151,92 +165,10 @@
 									<p>
 										<div class="video-container" style="left:12.5%;padding-bottom: calc(56.25% * .75);width: 75%;">
 											<img src="images/exes_in_crime/map_editor_gif.gif" alt="" />
-										</div>
-										Handy Dandy has only a few and also simple systems, which the entire game is build upon. 
-										The characters themselves are pretty much the most basic platformer characters imaginable. 
-										They only listen to three inputs: Left, Right and Jump. 
-										We decided to use the rigidbody physics system of Unity, as we wanted the players to be able to influence each other in a straight forward and easily understandable way. 
-										With that the players can help each other through the levels by using the other character as a platform.
-										<br>
-										<h3>Preformatted</h3>
-										<pre><code>
-public interface ISerializableUnit
-{
-	SerializedDataContainer Serialize();
-	void Deserialize(SerializedDataContainer input);
-
-	SerializableClasses GetSerializableType();
-}
-										</code></pre>
-										<br>
-										<pre><code>
-public class SerializedDataContainer
-{
-	public SerializableClasses type = SerializableClasses.undef;
-	public string prefabPath = "";
-	public List<PositionKey> posKeys = new List<PositionKey>();
-	public List<SerializedDataContainer> members = new List<SerializedDataContainer>();
-	public List<bool> bools= new List<bool>();
-	public List<string> strings = new List<string>();
-	public List<int> ints = new List<int>();
-	public List<float> floats = new List<float>();
-
-	public void Serialize(PositionKey value) { posKeys.Add(value); }
-	public void Serialize(SerializedDataContainer value) { members.Add(value); }
-	public void Serialize(bool value) { bools.Add(value); }
-	public void Serialize(string value) { strings.Add(value); }
-	public void Serialize(int value) { ints.Add(value); }
-	public void Serialize(float value) { floats.Add(value); }
-	public void Serialize(ISerializableUnit value) { Serialize(value.Serialize()); }
-
-	public PositionKey GetFirstPosKey()
-	{
-		PositionKey result = posKeys[0];
-		posKeys.RemoveAt(0);
-		return result;
-	}
-	public SerializedDataContainer GetFirstMember()
-	{
-		SerializedDataContainer result = members[0];
-		members.RemoveAt(0);
-		return result;
-	}
-	public bool GetFirstBool()
-	{
-		bool result = bools[0];
-		bools.RemoveAt(0);
-		return result;
-	}
-
-	public string GetFirstString()
-	{
-		string result = strings[0];
-		strings.RemoveAt(0);
-		return result;
-	}
-	public int GetFirstInt()
-	{
-		int result = ints[0];
-		ints.RemoveAt(0);
-		return result;
-	}
-
-	public float GetFirstFloat()
-	{
-		float result = floats[0];
-		floats.RemoveAt(0);
-		return result;
-	}
-}
-										</code></pre>
-										A bit more tricky is how the levels of handy dandy work. 
-										Each character has their own layout which are layered over each other and they only collide with the objects in 'their dimension'. 
-										The splitscreen effect gets achieved through a mask that is attached to the barrier which always stays in the middle between the characters.
-										<br>
-										<br>
-										At later stages in the game minecarts and little moles are introduced, which both allow for more interesting level designs by having moving/movable crystals.																
-									</p>
-									</section>
+									</div>
+								</section>
+								-->
+								
 						</div>
 					</section>
 
